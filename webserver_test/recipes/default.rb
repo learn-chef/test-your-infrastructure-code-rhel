@@ -3,7 +3,8 @@
 # Recipe:: default
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
-package_name = service_name = case node['platform']
+package_name = service_name =
+case node['platform']
 when 'centos' then 'httpd'
 when 'ubuntu' then 'apache2'
 end
