@@ -26,9 +26,9 @@ end
 # Create the database instance.
 mysql_database node['awesome_customers']['database']['dbname'] do
   connection(
-    :host => node['awesome_customers']['database']['host'],
-    :username => node['awesome_customers']['database']['username'],
-    :password => root_password_data_bag_item['password']
+    host: node['awesome_customers']['database']['host'],
+    username: node['awesome_customers']['database']['username'],
+    password: root_password_data_bag_item['password']
   )
   action :create
 end
@@ -39,9 +39,9 @@ user_password_data_bag_item = Chef::EncryptedDataBagItem.load('passwords', 'db_a
 # Add a database user.
 mysql_database_user node['awesome_customers']['database']['app']['username'] do
   connection(
-    :host => node['awesome_customers']['database']['host'],
-    :username => node['awesome_customers']['database']['username'],
-    :password => root_password_data_bag_item['password']
+    host: node['awesome_customers']['database']['host'],
+    username: node['awesome_customers']['database']['username'],
+    password: root_password_data_bag_item['password']
   )
   password user_password_data_bag_item['password']
   database_name node['awesome_customers']['database']['dbname']
@@ -60,5 +60,5 @@ end
 # Seed the database with a table and test data.
 execute 'initialize database' do
   command "mysql -h #{node['awesome_customers']['database']['host']} -u #{node['awesome_customers']['database']['app']['username']} -p#{user_password_data_bag_item['password']} -D #{node['awesome_customers']['database']['dbname']} < #{node['awesome_customers']['database']['seed_file']}"
-  not_if  "mysql -h #{node['awesome_customers']['database']['host']} -u #{node['awesome_customers']['database']['app']['username']} -p#{user_password_data_bag_item['password']} -D #{node['awesome_customers']['database']['dbname']} -e 'describe customers;'"
+  not_if "mysql -h #{node['awesome_customers']['database']['host']} -u #{node['awesome_customers']['database']['app']['username']} -p#{user_password_data_bag_item['password']} -D #{node['awesome_customers']['database']['dbname']} -e 'describe customers;'"
 end
