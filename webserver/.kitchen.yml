@@ -12,5 +12,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[webserver_test::default]
+      - recipe[webserver::default]
     attributes:
