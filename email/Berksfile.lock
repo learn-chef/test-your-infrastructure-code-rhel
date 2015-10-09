@@ -1,0 +1,9 @@
+DEPENDENCIES
+  email
+    path: .
+    metadata: true
+
+GRAPH
+  email (0.1.0)
+    postfix (~> 3.7.0)
+  postfix (3.7.0)
