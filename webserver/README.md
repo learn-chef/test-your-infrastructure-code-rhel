@@ -1,4 +1,4 @@
-# webserver_test
+# webserver
 
 TODO: Enter the cookbook description here.
 

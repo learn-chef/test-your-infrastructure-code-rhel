@@ -1,12 +1,12 @@
 #
-# Cookbook Name:: webserver_test
+# Cookbook Name:: webserver
 # Spec:: default
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
 require 'spec_helper'
 
-describe 'webserver_test::default' do
+describe 'webserver::default' do
   context 'on CentOS' do
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '6.6')
