@@ -1,0 +1,19 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos-6.6
+
+suites:
+  - name: default
+    run_list:
+      - recipe[email::default]
+    attributes:
+      postfix:
+        main:
+          mydomain: 'example.com'
+          myorigin: 'example.com'
