@@ -3,20 +3,14 @@
 # Recipe:: default
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
-package_name = service_name =
-case node['platform']
-when 'centos' then 'httpd'
-when 'ubuntu' then 'apache2'
-end
+package 'httpd'
 
-package package_name
-
-service service_name do
-  action [:enable, :start]
+service 'httpd' do
+    action [:enable, :start]
 end
 
 file '/var/www/html/index.html' do
-  content '<html>
+    content '<html>
   <body>
     <h1>hello world</h1>
   </body>
